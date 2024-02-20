@@ -95,6 +95,16 @@ Node * reverseLinkedList(Node * &head){
     }
     return prev;
 }
+bool SearchElement(Node *head,int element){
+    Node * temp = head;
+    while(temp!=NULL){
+        if(temp->data==element){
+            return true;
+        }
+        temp =  temp->next;
+    }
+    return false;
+}
 //Function for printing the linked list
 void print(Node * head){
     while(head!=NULL){
@@ -136,6 +146,6 @@ int main(){
     Node * temp = reverseLinkedList(first);
     print(temp);
 
-    
+    cout<<SearchElement(first,19);
     return 0;
 }
