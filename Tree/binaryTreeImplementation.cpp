@@ -58,6 +58,44 @@ void levelOrderTraversal(Node * root){
     }
    
 }
+void reverseLevelOrderTraversal2(Node * root){
+    vector<int> ans;
+    queue<Node*> q;
+    q.push(root);
+    q.push(NULL);
+    while(!q.empty()){
+        Node *temp = q.front();
+        q.pop();
+        if(temp==NULL){
+            ans.push_back(0);
+            if(!q.empty()){
+                q.push(NULL);
+            }
+        }
+        else{
+            ans.push_back(temp->data);
+            if(temp->right){
+                q.push(temp->right);
+            }
+            if(temp->left){
+                q.push(temp->left);
+            }
+        }
+
+
+
+        
+    }
+    reverse(ans.begin(),ans.end());
+
+    for(int i=0;i<ans.size();i++){
+        if(ans[i]==0){
+            cout<<endl;
+            continue;
+        }
+        cout<<ans[i]<<" ";
+    }
+}
 // NLR Node left right
 void preOrderTraversal(Node * root){
     if(root==NULL){
@@ -110,6 +148,9 @@ int main(){
     cout<<"Postorder traversal:";
     postOrderTraversal(root);
     cout<<endl;
+
+    cout<<"Reverse order traversal:";
+    reverseLevelOrderTraversal2(root);
     
     return 0;
 }
